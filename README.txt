@@ -1,0 +1,1 @@
+ALE 2026 website. Click an event to open a separate event page. Each event page has a different browser-generated AI-style animated scene related to its category. No video files are required.

@@ -1,0 +1,223 @@
+const EVENTS={
+"KALARAVA": ["CULTURAL PROGRAM", "CULTURAL", "dance", "A celebration of culture, creativity and live performances.", `A team-based cultural presentation showcasing the art, traditions, lifestyle, heritage or changing identity of Coastal Karnataka.`, ["Dance","Drama / Skit","Folk Song","Mime","Yakshagana elements","Traditional art forms","Local dialects"]],
+"REEL-THE-KARAVALI": ["REEL MAKING", "INDIVIDUAL / TEAM", "film", "Create a compelling reel inspired by the spirit of Karavali.", `Participants shall create a short reel presenting Coastal Karnataka through the perspective of today's generation.`, ["Traditions","Food","Occupations","Village life","Folk arts","Environment","Language","Forgotten practices","The changing face of Karavali"]],
+"EREG GOTUNDU": ["QUIZ", "TEAM", "quiz", "Test your knowledge, teamwork and quick thinking in an exciting quiz."],
+"BATTLE ARENA": ["FREE FIRE TOURNAMENT", "TEAM", "gaming", "Compete in the Free Fire tournament and battle for victory."],
+"KARAVALI QUEST": ["TREASURE HUNT", "TEAM", "treasure", "Follow clues, solve puzzles and uncover the hidden treasure.", `A team-based treasure hunt consisting of clues, puzzles and activity rounds connected with Coastal Karnataka, along with general logical and observational challenges.`, [], `QR codes and mobile phones may be incorporated into selected rounds.`]
+};
+
+const EVENT_COORDINATORS={
+  "KALARAVA": {
+    faculty: [["Mrs. Hemalatha Shetty", "+91-9611859800"]],
+    student: [["Ms. Apeksha", "+91-7259519321"], ["Ms. Sannidhi", "+91-8147656447"]]
+  },
+  "REEL-THE-KARAVALI": {
+    faculty: [["Ms. Bhavyashree", "+91-8088580560"]],
+    student: [["Mr. Jaibhim", "+91-6366646632"], ["Mr. Ankith", "+91-9945248684"]]
+  },
+  "EREG GOTUNDU": {
+    faculty: [["Mrs. Prashanthi", "+91-9449946300"]],
+    student: [["Ms. Swarna", "+91-8105252915"], ["Mr. Shreyas", "+91-8618184660"]]
+  },
+  "BATTLE ARENA": {
+    faculty: [["Ms Anujna", "+91-6362371337"]],
+    student: [["Mr. Aryan", "+91-7433813384"], ["Mr. Anand", "+91-6361339828"]]
+  },
+  "KARAVALI QUEST": {
+    faculty: [["Dr. Sona H C", "+91-9483333103"]],
+    student: [["Mr. Rithesh", "+91-7019752862"], ["Mr. Karthik", "+91-6361908479"]]
+  }
+};
+
+const EVENT_INSTRUCTIONS={
+  "KALARAVA": {
+    details: [
+      ["Team Size", "Minimum 6 and maximum 10 participants."],
+      ["Time Limit", "Maximum 10 minutes, including stage setup."]
+    ],
+    rules: [
+      "The performance should have a clear connection with Coastal Karnataka and its cultural identity.",
+      "Teams are free to combine different performing-art forms.",
+      "Use of fire, hazardous substances or any item that may damage the stage is prohibited.",
+      "Vulgar, offensive, discriminatory or inappropriate content will lead to disqualification.",
+      "Exceeding the prescribed time limit may attract deduction of marks.",
+      "Decision of the judges shall be final."
+    ],
+    judging: [
+      ["Theme & Cultural Relevance", "30%"],
+      ["Creativity & Originality", "25%"],
+      ["Performance", "25%"],
+      ["Overall Impact", "20%"]
+    ]
+  },
+  "REEL-THE-KARAVALI": {
+    details: [
+      ["Team Size", "Maximum 3 participants."],
+      ["Reel Duration", "Maximum 60 seconds."]
+    ],
+    rules: [
+      "The reel must relate to Coastal Karnataka.",
+      "Previously published commercial content shall not be permitted.",
+      "Copyrighted material should be avoided unless legitimately available for such use.",
+      "Offensive, political, obscene or discriminatory content shall not be permitted.",
+      "Reels shall be submitted within the deadline prescribed by the organisers.",
+      "Decision of the judges shall be final."
+    ],
+    judging: [
+      ["Relevance to Theme", "30%"],
+      ["Creativity", "25%"],
+      ["Storytelling / Message", "20%"],
+      ["Technical Presentation", "15%"],
+      ["Overall Impact", "10%"]
+    ]
+  },
+  "KARAVALI QUEST": {
+    details: [
+      ["Team Size", "4 participants per team."]
+    ],
+    rules: [
+      "Participants may use mobile phones only when permitted by the organisers.",
+      "Clues, QR codes, checkpoints or any material placed by the organisers shall not be removed, altered or damaged.",
+      "Teams shall follow the prescribed route and checkpoint sequence.",
+      "Any team found sharing clues or answers with another team may be disqualified.",
+      "The winning positions shall be determined based on successful completion of tasks and prescribed time.",
+      "In case of a tie, performance in the designated tie-breaker clue/task shall determine the result.",
+      "Decision of the event coordinators shall be final."
+    ]
+  },
+  "BATTLE ARENA": {
+    details: [],
+    rules: [
+      "Hacking, cheating, modified applications, scripts or any unfair means will result in immediate disqualification.",
+      "Players shall report to the designated gaming area at the prescribed time.",
+      "Participants shall preferably use their own mobile data/headphones.",
+      "Organisers shall not be responsible for individual device failure, battery failure.",
+      "Abusive language, disruptive behaviour or deliberate interference with another player's device/gameplay shall lead to disqualification.",
+      "Match settings, maps (Clash Squad, Battle ground), scoring method and qualifying structure shall be communicated before commencement of the tournament.",
+      "Teaming Up with other players in game is prohibited. If any such activity is found during the gameplay, it will lead to disqualification of the whole team.",
+      "The decision of the gaming coordinators/referees shall be final."
+    ]
+  },
+  "EREG GOTUNDU": {
+    details: [],
+    rules: [
+      "It is general knowledge regarding Coastal Karnataka quiz.",
+      "5 Students makes a team.",
+      "4 Different rounds of Quiz will be there.",
+      "Each round of Quiz will act as an Eliminator Round.",
+      "For Each round Tie-Breaker will be there."
+    ]
+  }
+};
+const q=new URLSearchParams(location.search),name=q.get('event')||'KALARAVA',d=EVENTS[name]||EVENTS['KALARAVA'];
+// A stable per-event seed gives every destination its own animated "film" rather than a shared category backdrop.
+const eventSeed=[...name].reduce((total,char)=>total+char.charCodeAt(0),0),hue=(eventSeed*17)%360;
+document.title=name+' | Aಲೆ 2026';document.getElementById('cat').textContent=d[0];document.getElementById('title').textContent=name;document.getElementById('desc').textContent=d[3];document.getElementById('ename').textContent=name;document.getElementById('format').textContent=d[1];
+const conceptBox=document.getElementById('conceptBox');if(d[4]){document.getElementById('conceptText').textContent=d[4];const list=document.getElementById('conceptList');(d[5]||[]).forEach(item=>{const li=document.createElement('li');li.textContent=item;list.appendChild(li)});if(d[6])document.getElementById('conceptNote').textContent=d[6];}else{conceptBox.remove();}
+
+const coordinators=EVENT_COORDINATORS[name]||EVENT_COORDINATORS['KALARAVA'];
+function renderCoordinatorList(targetId, people){
+  const target=document.getElementById(targetId);
+  if(!target) return;
+  people.forEach(([person,phone])=>{
+    const card=document.createElement('div');
+    card.className='coordinator-card';
+    const nameEl=document.createElement('strong');
+    nameEl.textContent=person;
+    const phoneEl=document.createElement('a');
+    phoneEl.href='tel:'+phone.replace(/[^+\\d]/g,'');
+    phoneEl.textContent=phone;
+    phoneEl.setAttribute('aria-label','Call '+person+' at '+phone);
+    card.append(nameEl,phoneEl);
+    target.appendChild(card);
+  });
+}
+renderCoordinatorList('facultyCoordinatorList', coordinators.faculty);
+renderCoordinatorList('studentCoordinatorList', coordinators.student);
+
+const instructions=EVENT_INSTRUCTIONS[name]||EVENT_INSTRUCTIONS['KALARAVA'];
+const instructionsContent=document.getElementById('instructionsContent');
+if(instructions.details.length){
+  const detailGrid=document.createElement('div');
+  detailGrid.className='instruction-details';
+  instructions.details.forEach(([label,value])=>{
+    const card=document.createElement('div');
+    card.className='instruction-detail';
+    const small=document.createElement('small'); small.textContent=label;
+    const strong=document.createElement('strong'); strong.textContent=value;
+    card.append(small,strong); detailGrid.appendChild(card);
+  });
+  instructionsContent.appendChild(detailGrid);
+}
+
+const rulesHeading=document.createElement('h3');
+rulesHeading.textContent='Rules';
+instructionsContent.appendChild(rulesHeading);
+const rulesList=document.createElement('ol');
+rulesList.className='rules-list';
+instructions.rules.forEach(rule=>{const li=document.createElement('li');li.textContent=rule;rulesList.appendChild(li)});
+instructionsContent.appendChild(rulesList);
+
+if(instructions.judging){
+  const judgingHeading=document.createElement('h3');
+  judgingHeading.textContent='Suggested Judging Criteria';
+  instructionsContent.appendChild(judgingHeading);
+  const judgingGrid=document.createElement('div');
+  judgingGrid.className='judging-grid';
+  instructions.judging.forEach(([criterion,weight])=>{
+    const card=document.createElement('div'); card.className='judging-item';
+    const label=document.createElement('span'); label.textContent=criterion;
+    const value=document.createElement('strong'); value.textContent=weight;
+    card.append(label,value); judgingGrid.appendChild(card);
+  });
+  instructionsContent.appendChild(judgingGrid);
+}
+const REGISTRATION_LINKS={
+  'KALARAVA':'https://docs.google.com/forms/d/e/1FAIpQLSfytwirw3PfCl0QVWeS0HjGj6aZtlHvWpdzK7PLPcBIhLmHlQ/viewform?usp=header',
+  'REEL-THE-KARAVALI':'https://docs.google.com/forms/d/e/1FAIpQLSd_YWr5YiCVOaL5hDOaPaBbAnfPKHmYHwyTQexG7VOoHOsx0A/viewform?usp=header',
+  'KARAVALI QUEST':'https://docs.google.com/forms/d/e/1FAIpQLSfXzXjHokcIsgvbjN0vDCgs5uptsF4c4yKVaFU_s6WfR-mv_Q/viewform?usp=publish-editor',
+  'BATTLE ARENA':'https://docs.google.com/forms/d/e/1FAIpQLSdcGFvsA_mUMABSgl6mqVIzRgU_MG4xVZi9d0wM7NpKTBvlbQ/viewform?usp=publish-editor',
+  'EREG GOTUNDU':'https://docs.google.com/forms/d/e/1FAIpQLSdfthpV6cTORWdAkyXx5cn0DulVhtoWnjSV_Bof4Fr-du1oyg/viewform?usp=publish-editor'
+};
+const registerLink=document.getElementById('registerLink');
+registerLink.href=REGISTRATION_LINKS[name]||'registration.html?event='+encodeURIComponent(name);
+registerLink.target='_blank';
+registerLink.rel='noopener noreferrer';
+const c=document.getElementById('scene'),x=c.getContext('2d');let W,H,t=0;
+function resize(){const dpr=Math.min(window.devicePixelRatio||1,1.5);W=innerWidth;H=innerHeight;c.width=W*dpr;c.height=H*dpr;c.style.width=W+'px';c.style.height=H+'px';x.setTransform(dpr,0,0,dpr,0,0)}resize();addEventListener('resize',resize);
+const stars=Array.from({length:80},()=>({x:Math.random(),y:Math.random(),s:.5+Math.random()*2,v:.3+Math.random()}));
+function base(){let g=x.createRadialGradient(W*.55,H*.45,10,W*.55,H*.5,Math.max(W,H)*.8);g.addColorStop(0,`hsl(${hue} 65% 18%)`);g.addColorStop(.35,`hsl(${hue} 45% 7%)`);g.addColorStop(1,'#020202');x.fillStyle=g;x.fillRect(0,0,W,H)}
+function rings(cx,cy,n){for(let i=0;i<n;i++){let r=75+i*65+Math.sin(t*1.5+i)*12;x.beginPath();x.arc(cx,cy,r,0,7);x.strokeStyle='rgba(229,169,66,'+(.12-i*.008)+')';x.stroke()}}
+function beams(){for(let i=0;i<6;i++){let bx=W*(.12+i*.15);x.save();x.translate(bx,0);x.rotate(Math.sin(t*.7+i)*.35);let g=x.createLinearGradient(0,0,0,H);g.addColorStop(0,'rgba(245,190,78,.23)');g.addColorStop(1,'rgba(245,190,78,0)');x.fillStyle=g;x.beginPath();x.moveTo(-12,0);x.lineTo(12,0);x.lineTo(180,H);x.lineTo(-180,H);x.fill();x.restore()}}
+function digital(){x.font='13px monospace';let s=['01','AI','{}','</>','[]','⚙','<>'];for(let i=0;i<50;i++){let px=(i*97+t*35)%W,py=(i*61+t*10)%H;x.fillStyle='rgba(225,170,68,.3)';x.fillText(s[i%s.length],px,py)}}
+function sports(){let cx=W*.7,cy=H*.48;for(let i=0;i<75;i++){let a=i*.36+t*2,rr=80+(i%11)*34,px=cx+Math.cos(a)*rr,py=cy+Math.sin(a)*rr*.5;x.beginPath();x.arc(px,py,1.5+(i%3),0,7);x.fillStyle='rgba(247,195,82,.7)';x.fill()}rings(cx,cy,5)}
+function fun(){let cx=W*.7,cy=H*.48;for(let i=0;i<9;i++){x.beginPath();x.arc(cx,cy,80+i*65+Math.sin(t*2+i)*18,0,7);x.strokeStyle='rgba(224,165,63,.16)';x.stroke()}}
+function character(px,py,pose,scale=1){const swing=Math.sin(t*4+px*.02)*18*scale;x.save();x.translate(px,py);x.scale(scale,scale);x.strokeStyle=`hsla(${hue},95%,78%,.92)`;x.lineWidth=5;x.lineCap='round';x.beginPath();x.arc(0,-76,13,0,7);x.stroke();x.beginPath();x.moveTo(0,-63);x.lineTo(0,-8);x.stroke();let arms=pose==='dance'?[-48-swing,48+swing]:pose==='sport'?[-38,42]:pose==='code'?[-15,15]:[-28,28];x.beginPath();x.moveTo(0,-48);x.lineTo(arms[0],-25);x.moveTo(0,-48);x.lineTo(arms[1],-25);x.moveTo(0,-8);x.lineTo(-24,38);x.moveTo(0,-8);x.lineTo(24,38);x.stroke();x.restore()}
+function characterCast(){let cx=W*.7,cy=H*.59,k=d[2];if(['dance','music','fashion','drama'].includes(k)){character(cx-70,cy,'dance',1.2);character(cx+80,cy+18,'dance',.86)}else if(['code','tech','robot','project'].includes(k)){character(cx-65,cy,'code',1.05);x.fillStyle=`hsla(${hue},90%,75%,.5)`;x.fillRect(cx-20,cy-48,100,45)}else if(['football','volleyball','cricket','athletics'].includes(k)){character(cx,cy,'sport',1.2);x.beginPath();x.arc(cx+95*Math.sin(t*2),cy-42+60*Math.cos(t*2),16,0,7);x.fillStyle=`hsla(${hue},95%,76%,.9)`;x.fill()}else if(k==='treasure'){character(cx,cy,'sport',1.1);x.strokeRect(cx+80,cy-45,55,42)}else if(k==='minute'){character(cx,cy,'dance',1.05);x.font='bold 68px Orbitron';x.fillStyle=`hsla(${hue},95%,76%,.72)`;x.fillText('60',cx+70,cy-55)}else if(k==='tug'){character(cx-95,cy,'sport',1);character(cx+95,cy,'sport',1);x.beginPath();x.moveTo(cx-180,cy-15);x.lineTo(cx+180,cy-15);x.stroke()}else{character(cx,cy,'sport',1.1)}}
+function genreFilm(){let cx=W*.7,cy=H*.47,p=t*2;x.save();x.strokeStyle=`hsla(${hue},92%,72%,.85)`;x.fillStyle=`hsla(${hue},92%,72%,.55)`;x.lineWidth=3;
+// Each event gets its own genre-specific animated scene.
+if(name==='KALARAVA'){
+  // Cultural stage: moving spotlights, dancer silhouettes and glowing rangoli petals.
+  for(let i=0;i<7;i++){let a=p*.65+i*Math.PI*2/7,px=cx+Math.cos(a)*150,py=cy+Math.sin(a)*95;x.save();x.translate(px,py);x.rotate(a+p*.3);x.beginPath();x.ellipse(0,0,18,52,0,0,Math.PI*2);x.stroke();x.restore()}
+  character(cx-70,cy+105,'dance',1.35);character(cx+90,cy+115,'dance',1.05);
+  for(let i=0;i<28;i++){let a=i*Math.PI/14+p*.25,r=70+Math.sin(p+i)*12;x.beginPath();x.arc(cx+Math.cos(a)*r,cy+Math.sin(a)*r,3+(i%3),0,7);x.fill()}
+}else if(name==='REEL-THE-KARAVALI'){
+  // Reel-making: a rotating film reel, moving film strip and camera focus frame.
+  x.save();x.translate(cx,cy);x.rotate(-p*.25);x.strokeRect(-105,-105,210,210);x.beginPath();x.arc(0,0,78,0,7);x.stroke();for(let i=0;i<8;i++){let a=i*Math.PI/4;x.beginPath();x.arc(Math.cos(a)*48,Math.sin(a)*48,17,0,7);x.stroke()}x.restore();
+  x.strokeRect(cx-260,cy+155,520,48);for(let i=0;i<13;i++)x.strokeRect(cx-248+i*40,cy+165,24,28);
+  let fx=cx+Math.sin(p*.7)*115,fy=cy+Math.cos(p*.9)*70;x.strokeRect(fx-75,fy-55,150,110);x.beginPath();x.arc(fx,fy,25,0,7);x.stroke();
+}else if(name==='EREG GOTUNDU'){
+  // Quiz: floating question marks and rotating answer cards.
+  x.font='bold 58px Orbitron,monospace';for(let i=0;i<9;i++){let px=cx-230+(i%3)*230+Math.sin(p+i)*22,py=cy-145+Math.floor(i/3)*135+Math.cos(p*1.2+i)*16;x.save();x.translate(px,py);x.rotate(Math.sin(p+i)*.12);x.strokeRect(-52,-43,104,86);x.fillText(['?','A','B','C','D','?','✓','?','!'][i],-18,20);x.restore()}
+}else if(name==='BATTLE ARENA'){
+  // Gaming: neon arena grid, pulsing target rings and a moving energy orb.
+  x.save();x.strokeStyle='rgba(70,245,255,.55)';for(let i=0;i<9;i++){let yy=cy+20+i*i*4;x.beginPath();x.moveTo(cx-320,yy);x.lineTo(cx+320,yy);x.stroke()}for(let i=-7;i<=7;i++){x.beginPath();x.moveTo(cx,cy);x.lineTo(cx+i*55,cy+230);x.stroke()}x.restore();
+  for(let i=0;i<5;i++){x.beginPath();x.ellipse(cx,cy,65+i*36+Math.sin(p*1.6+i)*10,40+i*25,Math.sin(p*.25),0,7);x.stroke()}let ox=cx+Math.cos(p)*180,oy=cy+Math.sin(p*1.4)*90;x.beginPath();x.arc(ox,oy,18+Math.sin(p*3)*5,0,7);x.fill();
+}else if(name==='KARAVALI QUEST'){
+  // Treasure hunt: parchment-like map route, pulsing clue markers and a treasure chest.
+  x.setLineDash([10,9]);x.beginPath();x.moveTo(cx-260,cy-110);x.quadraticCurveTo(cx-70,cy-220,cx-55,cy-30);x.quadraticCurveTo(cx-30,cy+145,cx+175,cy+95);x.stroke();x.setLineDash([]);
+  for(let i=0;i<4;i++){let px=[cx-260,cx-55,cx+15,cx+175][i],py=[cy-110,cy-30,cy+135,cy+95][i];x.beginPath();x.arc(px,py,12+Math.sin(p*2+i)*4,0,7);x.stroke();x.fillText(String(i+1),px-4,py+5)}
+  x.strokeRect(cx+115,cy-125,120,85);x.beginPath();x.moveTo(cx+115,cy-125);x.lineTo(cx+175,cy-175);x.lineTo(cx+235,cy-125);x.stroke();x.font='bold 28px Orbitron';x.fillText('✦',cx+160,cy-75);
+}else if(d[2]==='dance'){for(let i=0;i<6;i++){x.beginPath();x.arc(cx+Math.sin(p+i)*150,cy+Math.cos(p*1.5+i)*90,16+i*3,0,7);x.stroke()}}else if(d[2]==='music'){for(let i=0;i<18;i++){let h=35+Math.abs(Math.sin(p+i))*150;x.fillRect(cx-210+i*24,cy+120-h,10,h)}}else if(d[2]==='fashion'){for(let i=0;i<5;i++){let px=cx-160+i*80,py=cy+Math.sin(p+i)*42;x.beginPath();x.moveTo(px,py-80);x.lineTo(px-32,py+75);x.lineTo(px+32,py+75);x.closePath();x.stroke()}}else if(d[2]==='drama'){x.beginPath();x.arc(cx,cy,125,0,7);x.stroke();for(let i=0;i<7;i++){x.beginPath();x.arc(cx+Math.cos(p+i)*88,cy+Math.sin(p+i)*88,18,0,7);x.fill()}}else if(d[2]==='code'){for(let i=0;i<10;i++){x.strokeRect(cx-180+(i*47+p*20)%360,cy-130+(i%3)*75,32,32)}}else if(d[2]==='tech'){for(let i=0;i<16;i++){x.beginPath();x.moveTo(cx,cy);x.lineTo(cx+Math.cos(p+i)*210,cy+Math.sin(p*1.3+i)*145);x.stroke()}}else if(d[2]==='robot'){x.rotate(p*.15);for(let i=0;i<8;i++){x.beginPath();x.moveTo(cx,cy);x.lineTo(cx+Math.cos(i*.79)*175,cy+Math.sin(i*.79)*175);x.stroke()}}else if(d[2]==='project'){for(let i=0;i<7;i++)x.strokeRect(cx-120+i*12,cy-120+i*12,240-i*24,240-i*24)}else if(d[2]==='football'){x.beginPath();x.arc(cx+Math.sin(p)*155,cy+Math.cos(p)*85,42,0,7);x.stroke()}else if(d[2]==='volleyball'){for(let i=0;i<9;i++){x.beginPath();x.arc(cx,cy,55+i*28+Math.sin(p+i)*9,0,7);x.stroke()}}else if(d[2]==='cricket'){x.fillRect(cx-12,cy-180+Math.sin(p)*80,24,280);x.beginPath();x.arc(cx+Math.cos(p)*160,cy+Math.sin(p)*115,16,0,7);x.fill()}else if(d[2]==='athletics'){for(let i=0;i<6;i++){x.beginPath();x.ellipse(cx-180+i*68,cy+Math.sin(p+i)*75,28,65,0,0,7);x.stroke()}}else if(d[2]==='treasure'){for(let i=0;i<7;i++){x.beginPath();x.arc(cx,cy,55+i*31,0,p+i);x.stroke()}}else if(d[2]==='minute'){for(let i=0;i<12;i++){x.beginPath();x.arc(cx,cy,150,i*.52+p,i*.52+p+.25);x.lineTo(cx,cy);x.fill()}}else if(d[2]==='tug'){for(let i=0;i<16;i++){x.beginPath();x.arc(cx-260+i*34,cy+Math.sin(p+i)*18,11,0,7);x.fill()}x.beginPath();x.moveTo(cx-280,cy);x.lineTo(cx+280,cy);x.stroke()}else{for(let i=0;i<11;i++){x.beginPath();x.arc(cx+Math.cos(p+i*2)*170,cy+Math.sin(p*1.7+i)*115,10+i,0,7);x.stroke()}}x.restore()}
+function signature(){const cx=W*.7,cy=H*.47,phase=t*(1.4+(eventSeed%5)*.16);x.save();x.translate(cx,cy);x.rotate(phase*.18);x.strokeStyle=`hsla(${hue},85%,68%,.65)`;x.lineWidth=2;for(let i=0;i<5+(eventSeed%5);i++){const r=38+i*19+Math.sin(phase+i)*8;x.beginPath();x.roundRect(-r,-r,r*2,r*2,12);x.stroke()}x.restore();x.font='700 13px Orbitron, monospace';x.fillStyle=`hsla(${hue},90%,78%,.45)`;x.fillText(name.toUpperCase(),W*.58,H*.82)}
+let eventRAF=0;function draw(){if(document.hidden){eventRAF=0;return}t+=.008;base();if(['dance','music','fashion','drama'].includes(d[2])){beams();rings(W*.7,H*.45,7)}else if(['code','tech','robot','project'].includes(d[2])){digital();rings(W*.7,H*.45,5)}else if(['football','volleyball','cricket','athletics'].includes(d[2]))sports();else fun();genreFilm();signature();stars.forEach(p=>{p.y-=.001*p.v;if(p.y<0)p.y=1;x.beginPath();x.arc(p.x*W,p.y*H,p.s,0,7);x.fillStyle=`hsla(${hue},90%,75%,.55)`;x.fill()});eventRAF=requestAnimationFrame(draw)}draw();document.addEventListener('visibilitychange',()=>{if(!document.hidden&&!eventRAF)draw()});

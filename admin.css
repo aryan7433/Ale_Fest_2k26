@@ -1,0 +1,8 @@
+/* Owner dashboard layout refinement */
+#login,#dashboard{width:min(100%,1100px)!important;min-height:100vh;margin:0 auto!important;padding:130px 8vw 72px!important}
+#login h1,#dashboard h1{font-size:clamp(42px,6vw,76px)}
+#loginForm{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:28px}
+#loginForm input{min-width:min(100%,340px);min-height:50px}
+.tools>*{min-height:46px}
+#table{display:block;overflow-x:auto;border:1px solid rgba(211,154,56,.24)}
+@media(max-width:700px){#login,#dashboard{width:100%;padding:108px 24px 50px}#loginForm{display:grid;grid-template-columns:1fr}#loginForm input,#loginForm button{width:100%}.tools{display:grid;grid-template-columns:1fr}.tools>*{width:100%}th,td{padding:12px;font-size:12px;white-space:nowrap}}

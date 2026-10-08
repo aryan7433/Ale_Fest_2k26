@@ -1,0 +1,316 @@
+@import url('admin.css');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Poppins:wght@400;600;700&display=swap');*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#030303;color:#f7ead0;font-family:Poppins,Arial;overflow-x:hidden}#scene{position:fixed;inset:0;width:100%;height:100%;z-index:-3}.shade{position:fixed;inset:0;background:radial-gradient(circle,transparent 10%,#0005 60%,#000 100%);z-index:-2}header{position:fixed;top:0;left:0;right:0;padding:24px 5vw;display:flex;justify-content:space-between;z-index:5;background:linear-gradient(#050505dd,transparent);font-family:Orbitron;letter-spacing:2px;font-size:12px}header a{color:#ffe1a0;text-decoration:none}header span{color:#d69a38}main{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:100px 8vw;max-width:1100px}.live{color:#f1b84e;letter-spacing:2px;font-size:10px;margin-bottom:20px}#cat{color:#dba04a;letter-spacing:4px;font-size:12px}h1{font-family:Orbitron;font-size:clamp(48px,9vw,115px);line-height:.95;margin:15px 0 25px;background:linear-gradient(#fff6d5,#e0a03a,#743512);-webkit-background-clip:text;color:transparent}#desc{max-width:650px;line-height:1.85;color:#d2c4aa}.buttons{display:flex;gap:12px;flex-wrap:wrap;margin:30px 0}.buttons a,#register a{padding:14px 23px;border:1px solid #d39a38;background:#d39a38;color:#100a03;text-decoration:none;font-size:10px;font-weight:bold;letter-spacing:2px}.buttons .outline{background:#080808aa;color:#ffe1a0}section{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #ffffff22;padding-top:20px;margin-top:25px}section div{padding:0 15px;border-right:1px solid #ffffff18}section div:first-child{padding-left:0}section div:last-child{border:0}section small{display:block;color:#8f8575;font-size:8px;letter-spacing:2px;margin-bottom:6px}section strong{font-size:10px;letter-spacing:1px}#register{min-height:65vh;padding:100px 8vw;background:linear-gradient(transparent,#090604);display:flex;flex-direction:column;justify-content:center}#register h2{font-family:Orbitron;font-size:clamp(35px,6vw,70px);margin:10px 0}#register p{color:#bcae96}@media(max-width:700px){header{padding:18px 15px;font-size:9px}main{padding:95px 24px 50px}h1{font-size:17vw}section{grid-template-columns:repeat(2,1fr);gap:18px}section div{border:0;padding:0}.buttons{flex-direction:column;align-items:flex-start}}
+
+/* ALE NEW WAVE animated atmosphere: generated entirely with CSS/canvas, no video assets */
+body{background:#050816;color:#eafcff}
+body:before{content:"";position:fixed;inset:-25%;z-index:-2;pointer-events:none;background:radial-gradient(ellipse at 18% 25%,rgba(0,220,210,.19),transparent 35%),radial-gradient(ellipse at 82% 20%,rgba(123,72,255,.23),transparent 36%),radial-gradient(ellipse at 60% 90%,rgba(255,61,178,.10),transparent 38%);filter:blur(18px);animation:eventWave 18s ease-in-out infinite alternate}
+.shade{background:linear-gradient(120deg,rgba(3,6,20,.25),rgba(3,5,17,.72)),radial-gradient(circle,transparent 5%,#030611 100%)}
+header{background:linear-gradient(rgba(5,8,22,.9),transparent)}
+header a{color:#9cfff4}header span{color:#9c8cff}
+.live,#cat{color:#70f4e2}
+h1{background:linear-gradient(#fff,#9cfff4,#8b79ff);-webkit-background-clip:text}
+.buttons a,#register a{border-color:#70f4e2;background:#70f4e2;color:#06121a}
+.buttons .outline{background:#080b1dcc;color:#b8fff8}
+section{border-color:rgba(112,244,226,.2)}
+section small{color:#8ca4c9}
+@keyframes eventWave{0%{transform:translate3d(-3%,1%,0) rotate(-4deg) scale(1)}100%{transform:translate3d(4%,-3%,0) rotate(5deg) scale(1.12)}}
+@media(prefers-reduced-motion:reduce){body:before{animation:none}}
+
+
+/* Event concept panel */
+.concept-box{display:block;margin-top:42px;padding:28px 0 8px;border-top:1px solid rgba(112,244,226,.2);border-bottom:1px solid rgba(112,244,226,.12);max-width:900px}.concept-heading small{display:block;color:#70f4e2;font-size:9px;letter-spacing:3px;margin-bottom:7px}.concept-heading h2{font-family:Orbitron;font-size:clamp(26px,4vw,44px);margin:0 0 18px;background:linear-gradient(#fff,#9cfff4,#8b79ff);-webkit-background-clip:text;color:transparent}.concept-content{color:#d2e3e5}.concept-content p{max-width:850px;line-height:1.85;margin:0 0 18px}.concept-content h3{font-size:11px;letter-spacing:1px;color:#9cfff4;margin:20px 0 10px;text-transform:uppercase}.concept-content ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 28px;padding:0;margin:0;list-style:none}.concept-content li{position:relative;padding-left:18px;line-height:1.6;font-size:12px;color:#dbe9eb}.concept-content li:before{content:'•';position:absolute;left:0;color:#70f4e2;font-weight:bold}.concept-note{margin-top:20px!important;color:#9fb8bc;font-size:11px;font-style:italic}.concept-box:has(#conceptList:empty) #conceptActivitiesWrap{display:none}@media(max-width:700px){.concept-box{margin-top:30px;padding-top:22px}.concept-content ul{grid-template-columns:1fr;gap:6px}.concept-content p{font-size:13px}}
+
+
+/* General event guidelines panel */
+.guidelines-box{display:block;margin-top:42px;padding:30px 0 12px;border-top:1px solid rgba(112,244,226,.2);border-bottom:1px solid rgba(112,244,226,.12);max-width:900px}
+.guidelines-heading small{display:block;color:#70f4e2;font-size:9px;letter-spacing:3px;margin-bottom:7px}
+.guidelines-heading h2{font-family:Orbitron;font-size:clamp(24px,4vw,42px);margin:0 0 22px;background:linear-gradient(#fff,#9cfff4,#8b79ff);-webkit-background-clip:text;color:transparent}
+.guidelines-content{color:#d2e3e5}
+.guidelines-list{margin:0;padding:0 0 0 30px}
+.guidelines-list li{padding:7px 0 7px 6px;line-height:1.75;font-size:12px;color:#dbe9eb}
+.guidelines-list li::marker{color:#70f4e2;font-weight:700}
+@media(max-width:700px){.guidelines-box{margin-top:30px;padding-top:22px}.guidelines-list{padding-left:25px}.guidelines-list li{font-size:12px;padding:6px 0 6px 4px}}
+
+/* Event instructions / rules panel */
+.instructions-box{display:block;margin-top:42px;padding:30px 0 12px;border-top:1px solid rgba(112,244,226,.2);border-bottom:1px solid rgba(112,244,226,.12);max-width:900px}
+.instructions-heading small{display:block;color:#70f4e2;font-size:9px;letter-spacing:3px;margin-bottom:7px}
+.instructions-heading h2{font-family:Orbitron;font-size:clamp(26px,4vw,44px);margin:0 0 22px;background:linear-gradient(#fff,#9cfff4,#8b79ff);-webkit-background-clip:text;color:transparent}
+.instructions-content{color:#d2e3e5}
+.instruction-details{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-bottom:28px}
+.instruction-detail{padding:18px 20px;border:1px solid rgba(112,244,226,.18);background:rgba(7,16,27,.55);border-radius:10px;box-shadow:inset 0 0 30px rgba(112,244,226,.025)}
+.instruction-detail small{display:block;color:#8ca4c9;font-size:8px;letter-spacing:2px;margin-bottom:8px;text-transform:uppercase}
+.instruction-detail strong{display:block;color:#efffff;font-size:13px;line-height:1.6}
+.instructions-content h3{font-size:11px;letter-spacing:2px;color:#9cfff4;margin:24px 0 12px;text-transform:uppercase}
+.rules-list{margin:0;padding:0 0 0 28px}
+.rules-list li{padding:7px 0 7px 5px;line-height:1.7;font-size:12px;color:#dbe9eb}
+.rules-list li::marker{color:#70f4e2;font-weight:700}
+.judging-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 14px;margin-bottom:10px}
+.judging-item{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:13px 16px;border:1px solid rgba(112,244,226,.13);background:rgba(7,16,27,.4);border-radius:8px;font-size:11px}
+.judging-item span{color:#dbe9eb;line-height:1.45}
+.judging-item strong{color:#70f4e2;font-family:Orbitron;font-size:12px;white-space:nowrap}
+@media(max-width:700px){.instructions-box{margin-top:30px;padding-top:22px}.instruction-details,.judging-grid{grid-template-columns:1fr}.instruction-detail{padding:15px}.rules-list{padding-left:24px}.rules-list li{font-size:12px}.judging-item{padding:12px 14px}}
+
+
+/* ===== INTERACTION & MICRO-ANIMATION POLISH ===== */
+:where(a, button, .btn, .event-card, .event-tab, .menu-btn) {
+  -webkit-tap-highlight-color: transparent;
+}
+:where(.btn, .buttons a, button, .menu-btn, .event-tab) {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+:where(.btn, .buttons a, button, .menu-btn, .event-tab)::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background:radial-gradient(circle at var(--rx,50%) var(--ry,50%), rgba(255,255,255,.34), transparent 34%);
+  opacity:0;
+  transform:scale(.6);
+  transition:opacity .25s ease, transform .35s ease;
+  pointer-events:none;
+}
+:where(.btn, .buttons a, button, .menu-btn, .event-tab):hover::after {
+  opacity:1;
+  transform:scale(1.5);
+}
+:where(.btn, .buttons a, button, .menu-btn, .event-tab):active {
+  transform:translateY(2px) scale(.97);
+  transition-duration:.08s;
+}
+.btn, .buttons a, button {
+  box-shadow:0 8px 25px rgba(0,0,0,.18);
+}
+.primary, .buttons a:not(.outline), #registrationForm button, #loginForm button {
+  box-shadow:0 8px 30px rgba(217,164,65,.18);
+}
+.ripple {
+  position:absolute;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:rgba(255,255,255,.48);
+  transform:translate(-50%,-50%) scale(0);
+  pointer-events:none;
+  animation:buttonRipple .65s ease-out forwards;
+}
+@keyframes buttonRipple {
+  to { transform:translate(-50%,-50%) scale(24); opacity:0; }
+}
+.navbar nav a {
+  position:relative;
+  transition:color .25s ease, transform .25s ease;
+}
+.navbar nav a::after {
+  content:"";
+  position:absolute;
+  left:0; right:100%; bottom:-8px;
+  height:1px;
+  background:currentColor;
+  transition:right .3s ease;
+}
+.navbar nav a:hover { transform:translateY(-2px); }
+.navbar nav a:hover::after { right:0; }
+
+.event-card {
+  transform:translateZ(0);
+  will-change:transform;
+}
+.event-card::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  background:linear-gradient(120deg, transparent 25%, rgba(255,255,255,.08) 50%, transparent 75%);
+  transform:translateX(-130%);
+  transition:transform .7s ease;
+  pointer-events:none;
+}
+.event-card:hover::before { transform:translateX(130%); }
+.event-card:hover .icon { animation:iconPulse .8s ease both; }
+@keyframes iconPulse {
+  50% { transform:scale(1.15) rotate(-3deg); text-shadow:0 0 25px currentColor; }
+}
+.reveal {
+  opacity:0;
+  transform:translateY(28px);
+  transition:opacity .75s ease, transform .75s cubic-bezier(.2,.75,.2,1);
+}
+.reveal.visible { opacity:1; transform:none; }
+.hero-content > * {
+  animation:heroEnter .8s cubic-bezier(.2,.75,.2,1) both;
+}
+.hero-content > :nth-child(1){animation-delay:.05s}
+.hero-content > :nth-child(2){animation-delay:.12s}
+.hero-content > :nth-child(3){animation-delay:.2s}
+.hero-content > :nth-child(4){animation-delay:.28s}
+.hero-content > :nth-child(5){animation-delay:.36s}
+.hero-content > :nth-child(6){animation-delay:.44s}
+@keyframes heroEnter {
+  from { opacity:0; transform:translateY(18px); filter:blur(6px); }
+  to { opacity:1; transform:none; filter:none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    scroll-behavior:auto !important;
+    transition-duration:.01ms !important;
+  }
+  .reveal { opacity:1; transform:none; }
+}
+
+/* Extra depth for event/registration/admin controls */
+.buttons a, #registrationForm button, #loginForm button, .tools button {
+  transition:transform .22s ease, box-shadow .25s ease, border-color .25s ease, background .25s ease;
+}
+.buttons a:hover, #registrationForm button:hover, #loginForm button:hover, .tools button:hover {
+  transform:translateY(-3px);
+  box-shadow:0 12px 34px rgba(112,244,226,.16);
+}
+.instruction-detail, .concept-box, .guidelines-box {
+  transition:transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+}
+.instruction-detail:hover {
+  transform:translateY(-4px);
+  border-color:rgba(112,244,226,.38);
+  box-shadow:0 12px 35px rgba(0,0,0,.25), inset 0 0 30px rgba(112,244,226,.05);
+}
+
+/* ===== FINAL EVENT-PAGE POLISH ===== */
+header a{transition:transform .3s ease,color .3s ease,text-shadow .3s ease}
+header a:hover{transform:translateX(-4px);text-shadow:0 0 16px rgba(112,244,226,.55)}
+#cat{animation:catPulse 3s ease-in-out infinite alternate}
+#desc{animation:descFloat 7s ease-in-out infinite alternate}
+.buttons a{transition:transform .25s ease,box-shadow .3s ease,border-color .3s ease!important}
+.buttons a:hover{box-shadow:0 0 0 1px rgba(112,244,226,.12),0 12px 38px rgba(112,244,226,.18)}
+.instruction-detail,.judging-item{transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease,background .3s ease}
+.instruction-detail:hover,.judging-item:hover{transform:translateY(-5px);border-color:rgba(112,244,226,.4);box-shadow:0 16px 35px rgba(0,0,0,.25),inset 0 0 28px rgba(112,244,226,.045)}
+@keyframes catPulse{to{letter-spacing:6px;text-shadow:0 0 20px rgba(112,244,226,.18)}}
+@keyframes descFloat{to{transform:translateY(-3px)}}
+@media(prefers-reduced-motion:reduce){#cat,#desc{animation:none!important}}
+
+
+/* ===== EVENT PAGE TYPOGRAPHY FX ===== */
+#cat,.event-title{background-image:linear-gradient(105deg,#fff 0%,#70f4e2 38%,#d8fff9 50%,#8c7dff 67%,#fff 88%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:eventTextShimmer 6s ease-in-out infinite}
+.concept-box h2,.instructions-box h2,.guidelines-heading h2{animation:eventTextShimmer 7s ease-in-out infinite}
+@keyframes eventTextShimmer{0%,100%{background-position:0% 50%;text-shadow:0 0 4px rgba(112,244,226,.05)}50%{background-position:100% 50%;text-shadow:0 0 18px rgba(112,244,226,.18),0 0 30px rgba(140,125,255,.12)}}
+@media(prefers-reduced-motion:reduce){#cat,.event-title,.concept-box h2,.instructions-box h2,.guidelines-heading h2{animation:none!important}}
+
+
+/* ===== BEACH VIDEO BACKGROUND ===== */
+.site-video-bg{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center center;
+  z-index:-5;
+  pointer-events:none;
+  background:#06131a;
+}
+.site-video-overlay{
+  position:fixed;
+  inset:0;
+  z-index:-4;
+  pointer-events:none;
+  background:
+    linear-gradient(180deg,rgba(2,12,18,.46),rgba(2,18,25,.58) 48%,rgba(2,8,13,.76)),
+    linear-gradient(90deg,rgba(0,20,28,.20),rgba(0,0,0,.05),rgba(0,20,28,.22));
+}
+#scene{z-index:-3;opacity:.12}
+.shade{z-index:-2;background:radial-gradient(circle,transparent 8%,rgba(0,0,0,.22) 58%,rgba(0,0,0,.72) 100%)}
+@media (prefers-reduced-motion:reduce){
+  .site-video-bg{display:none}
+}
+
+/* ===== EVENT COORDINATORS ===== */
+.coordinators-box{
+  display:block;
+  margin-top:42px;
+  padding:30px 0 18px;
+  border-top:1px solid rgba(112,244,226,.2);
+  max-width:900px;
+}
+.coordinators-heading small{
+  display:block;
+  color:#70f4e2;
+  font-size:9px;
+  letter-spacing:3px;
+  margin-bottom:7px;
+}
+.coordinators-heading h2{
+  font-family:Orbitron;
+  font-size:clamp(26px,4vw,44px);
+  margin:0 0 24px;
+  background:linear-gradient(#fff,#9cfff4,#8b79ff);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+.coordinator-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;
+}
+.coordinator-group{
+  padding:20px;
+  border:1px solid rgba(112,244,226,.18);
+  background:rgba(7,16,27,.55);
+  border-radius:10px;
+  box-shadow:inset 0 0 30px rgba(112,244,226,.025);
+}
+.coordinator-group-label{
+  color:#8ca4c9;
+  font-size:8px;
+  letter-spacing:2px;
+  margin-bottom:13px;
+  text-transform:uppercase;
+}
+.coordinator-list{display:grid;gap:10px}
+.coordinator-card{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  padding:13px 14px;
+  border:1px solid rgba(112,244,226,.12);
+  background:rgba(7,16,27,.42);
+  border-radius:8px;
+  transition:transform .25s ease,border-color .25s ease,background .25s ease;
+}
+.coordinator-card:hover{
+  transform:translateY(-2px);
+  border-color:rgba(112,244,226,.35);
+  background:rgba(112,244,226,.045);
+}
+.coordinator-card strong{
+  color:#efffff;
+  font-size:12px;
+  line-height:1.4;
+}
+.coordinator-card a{
+  color:#70f4e2;
+  font-family:Orbitron,monospace;
+  font-size:10px;
+  letter-spacing:.3px;
+  text-decoration:none;
+  white-space:nowrap;
+}
+.coordinator-card a:hover{text-decoration:underline}
+@media(max-width:700px){
+  .coordinators-box{margin-top:30px;padding-top:22px}
+  .coordinator-grid{grid-template-columns:1fr}
+  .coordinator-group{padding:15px}
+  .coordinator-card{align-items:flex-start;flex-direction:column;gap:6px}
+  .coordinator-card a{font-size:10px}
+}
+
+/* ===== PERFORMANCE / STABILITY PATCH ===== */
+#scene{backface-visibility:hidden;transform:translateZ(0);}
+@media (max-width:700px){#scene{opacity:.35!important}}
+@media (prefers-reduced-motion:reduce){#scene{display:none!important}}
+/* Keep event pages light: the beach video + scene canvas provide the motion. */
+body:before{animation:none!important;filter:none!important;opacity:.55}
+header{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
