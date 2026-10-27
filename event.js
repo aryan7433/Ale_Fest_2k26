@@ -33,7 +33,7 @@ const EVENT_INSTRUCTIONS={
   "KALARAVA": {
     details: [
       ["Team Size", "Minimum 6 and maximum 10 participants."],
-      ["Time Limit", "Maximum 10 minutes, including stage setup."]
+      ["Time Limit", "Maximum 15 minutes, including stage setup."]
     ],
     rules: [
       "The performance should have a clear connection with Coastal Karnataka and its cultural identity.",
